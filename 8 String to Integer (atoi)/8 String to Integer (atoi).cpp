@@ -9,13 +9,13 @@
 class Solution {
 public:
     int myAtoi(string str) {
-        long rslt = 0;
-        int i = 0;
-        int temp;
+        long rslt = 0;  // in case overflow
+        int i = 0;  // string index
+        int temp;  // temp char
         bool neg = false;
-        bool count_start = false; // find another '+','-',' ' return 0
+        bool count_start = false; // find another '+','-',' ' return 0 or rslt
         while( str[i] ){
-            if ( str[i] != ' '){
+            if ( str[i] != ' '){  // if haven't start, remove first ' ',else return rslt
                 if( str[i] == '+' ){
                     if ( count_start == true )
                         return 0;
