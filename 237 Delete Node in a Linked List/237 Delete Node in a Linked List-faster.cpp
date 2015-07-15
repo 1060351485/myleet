@@ -19,5 +19,9 @@ public:
     void deleteNode(ListNode* node) {
         node->val = node->next->val;
         node->next = node->next->next?node->next->next:NULL;
-    }            
+    }
+    
+    void deleteNode(ListNode* node) {
+        *node = *(node->next);
+    }
 };
