@@ -8,6 +8,9 @@
 
 class Solution {
 public:
+    
+    //avoid lines outside loop
+    
     vector<string> summaryRanges(vector<int>& nums) {
         int size = nums.size();
         vector<string> V;
@@ -22,6 +25,23 @@ public:
                 V.push_back(to_string(nums[i]));
             i = j;
             j++;
+        }
+        return V;
+    }
+    
+    // another method
+    vector<string> summaryRanges(vector<int>& nums) {
+        int size = nums.size();
+        vector<string> V;
+        int i = 0, iMark = 0;
+        while(i < size){
+            // i == size-1 essential
+            if((i == size-1)||(nums[i+1] > nums[i]+1)){
+                V.push_back(to_string(nums[iMark]));
+                if(i > iMark) V.back() += "->" + to_string(nums[i]);
+                iMark = i+1;
+            }
+            i++;
         }
         return V;
     }
