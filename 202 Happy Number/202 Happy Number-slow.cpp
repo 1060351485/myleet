@@ -30,4 +30,20 @@ public:
             n = temp;
         }
     }
+    
+    // 1->1, 2->4, 3->4, 4->4, 5->4, 6->4, 7->1, 8->4, 9->4, 10->1, 11->4, 12->4, 13->1, 14->4
+    bool isHappy(int n) {
+        int temp;   //temp is next n, mark is for detect circle
+        while(n){
+            temp = 0;
+            if(n == 1) return true;
+            if( n == 4 ) return false;
+            //calc next n
+            while(n){
+                temp += (n%10)*(n%10); // 4 ms
+                n /= 10;
+            }
+            n = temp;
+        }
+    }
 };
