@@ -14,7 +14,7 @@ public:
         unordered_map<int, int> M;
         memo[0] = nums[0];
         M[nums[0]] = 1;
-        for( int i = 1; i< nums.size() ;i++ ){
+        for( int i = 1; i< Size ;i++ ){
             if(M.find(nums[i]) == M.end()){
                 M[nums[i]] = 1;
                 memo[i] = memo[i-1];
