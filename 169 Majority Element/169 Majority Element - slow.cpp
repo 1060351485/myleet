@@ -28,4 +28,13 @@ public:
         }
         return memo[Size-1];
     }
+    
+    int majorityElement(vector<int>& nums) {
+        unordered_map<int, int> M;
+        for( int i = 0; i< nums.size() ;i++ ){
+            if(++M[nums[i]]>nums.size()/2){
+                return nums[i];
+            }
+        }
+    }
 };
