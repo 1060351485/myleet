@@ -18,7 +18,7 @@ public:
         vector<int>V(4);
         V[0] = D;V[1] = B; V[2] = H, V[3] = F;
         sort(V.begin(),V.end());
-        return V[2]-V[1]>0?V[2]-V[1]:0;
+        return V[2]-V[1];  // if no overlap , v[2]-v[1] = 0, return 0
     }
     
     int computeArea(int A, int B, int C, int D, int E, int F, int G, int H) {
