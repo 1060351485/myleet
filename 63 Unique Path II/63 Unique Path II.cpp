@@ -12,7 +12,6 @@ public:
     int uniquePathsWithObstacles(vector<vector<int>>& obstacleGrid) {
         int m = obstacleGrid.size();
         int n = obstacleGrid[0].size();
-        if(obstacleGrid[m-1][n-1]) return false; // the destination is blocked
         int *memo = new int[n];  // o(n) space
         int k;
         for(k = 0; k < n; k++){  // init first line

@@ -29,6 +29,6 @@ int uniquePaths(int m, int n) {
 int uniquePaths(int m, int n) {
     double rslt = 1;
     for(double i = 1; i <= m-1;i++)
-        rslt *= (n-1+i)/i;   //when m=10, n=10 got WA, pricision problem, 
+        rslt *= (n-1+i)/i;   //when m=10, n=10 got WA, pricision problem,
     return (int)rslt;
 }
