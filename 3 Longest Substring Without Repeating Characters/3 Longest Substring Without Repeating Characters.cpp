@@ -16,11 +16,8 @@ public:
         unordered_map<int, int> m;
         for(int i = 0; i < s.length() ; i++){
             if(m.find(s[i]) != m.end()){
-                if(m[s[i]] == start){
-                    start++;
-                }else if(m[s[i]] > start){
+                if(m[s[i]] >= start)
                     start = m[s[i]] + 1;
-                }
             }
             m[s[i]] = i;
             maxCnt = max(i-start+1, maxCnt);
