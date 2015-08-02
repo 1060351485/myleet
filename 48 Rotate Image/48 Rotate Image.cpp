@@ -39,4 +39,26 @@ public:
                 matrix[i][j] ^= matrix[n-1-j][i] ^= matrix[i][j] ^= matrix[n-1-j][i];
         
     }
-};
+    
+    //Basically, divide the array into 4 along the diagonals, then for each element in the top quadrant, place it into the slot 90 degrees cw, and the old 90 in 180 degrees cw, and the old 180 in 270 degrees , and the old 270 in the original place.
+    void rotate(vector<vector<int>>& matrix) {
+        int n = matrix.size();
+        int temp;
+        for( int i = 0 ; i <= n/2; i++){
+            for(int j = i; j < n-i-1; j++){
+                temp = move(matrix, matrix[i][j], j, n-1-i);
+                temp = move(matrix, temp, n-1-i, n-1-j);
+                temp = move(matrix, temp, n-1-j, i);
+                move(matrix, temp, i, j);
+            }
+        }
+        
+    }
+    
+    int move(vector<vector<int>>& matrix, int a, int i, int j){
+        int temp = matrix[i][j];
+        matrix[i][j] = a;
+        return temp;
+    }
+    
+    };
