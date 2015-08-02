@@ -41,6 +41,18 @@ public:
     }
     
     //Basically, divide the array into 4 along the diagonals, then for each element in the top quadrant, place it into the slot 90 degrees cw, and the old 90 in 180 degrees cw, and the old 180 in 270 degrees , and the old 270 in the original place.
+//    x x x x x
+//    x x x x x
+//    x x x x x
+//    x x x x x
+//    x x x x x
+//    
+//    n = 5
+//    (1,1)->(1,3)  (0,1)->(1,4)
+//    (1,3)->(3,3)  (1,4)->(4,3)
+//    (3,3)->(3,1)  (4,3)->(3,0)
+//    (3,1)->(1,1)  (3,0)->(0,1)
+    
     void rotate(vector<vector<int>>& matrix) {
         int n = matrix.size();
         int temp;
