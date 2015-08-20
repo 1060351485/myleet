@@ -1,0 +1,94 @@
+//
+//  144 Binary Tree Preorder Traversal.cpp
+//  
+//
+//  Created by Apple on 15/8/20.
+//
+//
+
+/**
+ * Definition for a binary tree node.
+ * struct TreeNode {
+ *     int val;
+ *     TreeNode *left;
+ *     TreeNode *right;
+ *     TreeNode(int x) : val(x), left(NULL), right(NULL) {}
+ * };
+ */
+class Solution {
+public:
+    
+    // recursive, but it's trivial...
+    vector<int> preorderTraversal(TreeNode* root) {
+        vector<int> v;
+        preTraversal(root, v);
+        return v;
+    }
+    void preTraversal(TreeNode* root, vector<int>& v){
+        if(!root) return;
+        v.push_back(root->val);
+        preTraversal(root->left, v);
+        preTraversal(root->right, v);
+    }
+    
+    
+    // iterate, use stack to imitate recursive
+    vector<int> preorderTraversal(TreeNode* root) {
+        vector<int> v;
+        if(!root) return v;
+        TreeNode* temp = root;
+        stack<TreeNode*> s;
+        s.push(root);
+        while(!s.empty()){
+            temp = s.top();
+            s.pop();
+            v.push_back(temp->val);
+            if(temp->right) s.push(temp->right);
+            if(temp->left) s.push(temp->left);
+        }
+    }
+    
+    
+    vector<int> preorderTraversal(TreeNode* root) {
+        vector<int> v;
+        if(!root) return v;
+        TreeNode* temp = root;
+        stack<TreeNode*> s;
+        while(true){
+            while(temp){
+                v.push_back(temp->val);
+                if(temp->right) s.push(temp->right);
+                temp = temp->left;
+            }
+            if(s.empty()) break;
+            temp = s.top();
+            s.pop();
+        };
+    }
+    
+    // morris traversal， O(1) space
+    vector<int> preorderTraversal(TreeNode* root) {
+        vector<int> v;
+        if(!root) return v;
+        TreeNode* temp = root, *prev;
+        while(temp){
+            if(!temp->left){
+                v.push_back(temp->val);
+                temp = temp->right;
+            }else{
+                prev = temp->left;
+                while(prev->right&&(prev->right != temp))
+                    prev = prev->right;
+                if(!prev->right){
+                    v.push_back(temp->val);
+                    prev->right = temp;
+                    temp = temp->left;
+                }else{
+                    prev->right = NULL;
+                    temp = temp->right;
+                }
+            }
+        }
+    }
+    
+};
