@@ -1,0 +1,15 @@
+int integerBreak(int n) {
+	vector<int> rslt(n+1,0);
+	rslt[1] = 1;
+	int tempmax;
+	for (int i = 1;i <= n; i++){
+		tempmax = 0;
+		for (int j = 1; j <= i/2; j++){
+			tempmax = max(max(j, rslt[j])*max(i-j, rslt[i-j]), tempmax);
+
+		}
+		rslt[i] = tempmax;
+
+	}
+	return rslt[n];
+}

@@ -1,0 +1,15 @@
+vector<int> countBits(int num) {
+	vector<int> rslt(num+1, 0);
+	rslt[1] = 1;
+	rslt[2] = 1;
+	int temp = 1;
+	int near2pow = 1;
+	for (int i = 3; i <= num; i++){
+		if (near2pow * 2 <= i)
+		  near2pow *= 2;
+		rslt[i] = (i%2)?rslt[near2pow] + rslt[i-near2pow]:rslt[i/2];
+
+	}
+	return rslt;
+
+}

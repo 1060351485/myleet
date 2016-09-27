@@ -1,0 +1,28 @@
+// backtrace TLE 
+
+int numDecodings(string s) {
+	int count = 0;
+	decode(s, count);
+	return count;
+
+}
+
+void decode(string s, int& count){
+	int size = s.size();
+	if (size == 0)
+	  return;
+	if (size == 1){
+		count++;
+		return;
+
+	}
+	if(size == 2 && atoi(s.c_str()) < 27){
+		count+=2;
+		return;
+
+	}
+	if (atoi(s.substr(0,2).c_str()) < 27)
+	  decode(s.substr(2), count);
+	decode(s.substr(1), count);
+
+}

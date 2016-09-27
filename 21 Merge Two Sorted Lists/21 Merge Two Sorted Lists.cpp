@@ -19,19 +19,18 @@ public:
     ListNode* mergeTwoLists(ListNode* l1, ListNode* l2) {
         ListNode * newHead = new ListNode(0);
         ListNode * newTemp = newHead; //go from pred
-        
-        if( !l1 || !l2 ){
-            return !l1 ? l2 : l1;
+        while( l1 && l2  ){
+           if (l1->val <= l2->val) {
+              newTemp->next = l1;
+              l1 = l1->next;
+           }else {
+              newTemp->next = l2;
+              l2 = l2->next;
+           }
+           newTemp = newTemp->next;
         }
-        
-        while( l1 && l2 ){a}
-        
-        if(l1){
-            newTemp->next = l1;
-        }
-        if(l2){
-            newTemp->next = l2;
-        }
+        newTemp->next = l1?l1:l2;
+
         return newHead->next;
     }
 };

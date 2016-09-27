@@ -1,0 +1,18 @@
+int numDecodings(string s) {
+	int size = s.size();
+	if (size == 0 || (size == 1 && s=="0")) return 0;
+	int* solus = new int[size+1];
+	solus[0] = 1;
+	solus[1] = (s[0]=='0')?0:1;
+	int temp;
+	for (int i = 1;i < size; i++){
+		temp = atoi(s.substr(i-1,2).c_str());
+		solus[i+1] = 0;
+		if (s[i] != '0')
+		  solus[i+1] = solus[i];
+		if (temp >= 10 && temp < 27)
+		  solus[i+1] += solus[i-1];
+
+	}
+	return solus[size];
+}
